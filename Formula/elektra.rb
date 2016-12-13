@@ -11,6 +11,8 @@ class Elektra < Formula
     cmake_args = %W[
       -DCMAKE_BUILD_TYPE=Release
       -DCMAKE_INSTALL_PREFIX=#{prefix}
+      -DCMAKE_PREFIX_PATH=/usr/local/opt/qt5
+      -DTOOLS=ALL
     ]
 
     mkdir "build" do
