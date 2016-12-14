@@ -11,4 +11,10 @@ brew tap ElektraInitiative/homebrew-elektra
 brew install elektra
 ```
 
-. To install the newest version from the master branch of Elektra use the following command `brew install --HEAD elektra`.
+## Versions
+
+| Version          | Command                                    |
+| ---------------- | ------------------------------------------ |
+| Bottle (Binary)  | `brew install elektra`                     |
+| Source (Release) | `brew install --build-from-source elektra` |
+| Source (Head)    | `brew install --HEAD elektra`              |
