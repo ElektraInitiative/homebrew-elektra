@@ -18,3 +18,8 @@ brew install elektra
 | Bottle (Binary)  | `brew install elektra`                     |
 | Source (Release) | `brew install --build-from-source elektra` |
 | Source (Head)    | `brew install --HEAD elektra`              |
+
+# Troubleshooting
+
+- If you have any problems using this formula, then please run `brew doctor` and remove all fragments of previous Elektra versions that the command reports.
+- To check if the installation works you can use the command `brew test elektra`.
