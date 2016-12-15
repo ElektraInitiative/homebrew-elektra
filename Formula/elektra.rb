@@ -24,6 +24,7 @@ class Elektra < Formula
       -DCMAKE_BUILD_TYPE=Release
       -DCMAKE_INSTALL_PREFIX=#{prefix}
       -DCMAKE_PREFIX_PATH=/usr/local/opt/qt5
+      -DBINDINGS=ALL
       -DTOOLS=ALL
     ]
 
