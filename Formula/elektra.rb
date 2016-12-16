@@ -22,13 +22,48 @@ class Elektra < Formula
   ronn.tags << :build
   depends_on ronn
 
+  # Run-Time Dependencies
+  depends_on "augeas" => :optional
+  depends_on "boost" => :optional
+  depends_on "dbus" => :optional
+  depends_on "libgit2" => :optional
+  depends_on "lua" => :optional
+  if build.with? "lua"
+    depends_on "swig"
+  end
+  depends_on "qt5" => :optional
+  if build.with? "qt5"
+    depends_on "discount" => ["with-fenced-code", "with-shared"]
+  end
+  depends_on "yajl" => :optional
+
   def install
     cmake_args = %W[
       -DCMAKE_BUILD_TYPE=Release
       -DCMAKE_INSTALL_PREFIX=#{prefix}
-      -DCMAKE_PREFIX_PATH=/usr/local/opt/qt5
-      -DBINDINGS=ALL
-      -DTOOLS=ALL
+    ]
+    bindings = ["cpp"]
+    tools = ["kdb", "gen"]
+    plugins = ["NODEP;-fcrypt"]
+
+    plugins << "augeas" if build.with? "augeas"
+    plugins << "tcl" if build.with? "boost"
+    plugins << "dbus" if build.with? "dbus"
+    plugins << "gitresolver" if build.with? "libgit2"
+    if build.with? "lua"
+      bindings << "swig_lua"
+      plugins << "lua"
+    end
+    if build.with? "qt5"
+      tools << "qt-gui"
+      cmake_args << "-DCMAKE_PREFIX_PATH=/usr/local/opt/qt5"
+    end
+    plugins << "yajl" if build.with? "yajl"
+
+    cmake_args += %W[
+      -DBINDINGS=#{bindings.join ";"}
+      -DTOOLS='#{tools.join ";"}'
+      -DPLUGINS='#{plugins.join ";"}'
     ]
 
     mkdir "build" do
