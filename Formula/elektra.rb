@@ -61,7 +61,7 @@ class Elektra < Formula
     plugins << "yajl" if build.with? "yajl"
 
     cmake_args += %W[
-      -DBINDINGS=#{bindings.join ";"}
+      -DBINDINGS='#{bindings.join ";"}'
       -DTOOLS='#{tools.join ";"}'
       -DPLUGINS='#{plugins.join ";"}'
     ]
