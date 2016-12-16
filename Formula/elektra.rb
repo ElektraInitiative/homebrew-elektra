@@ -8,7 +8,7 @@ class Elektra < Formula
   bottle do
     root_url("https://github.com/ElektraInitiative/homebrew-elektra/releases/" \
              "download/0.8.19")
-    sierra = "81d448a1622999f8a27c94bc3f34db4c6db33cf8dc5019296f68c1512759fd00"
+    sierra = "be74a6119140876af7ef5d99ce085fb8c7c1d0a07499cd40c52b61c42ef83d5c"
     sha256(sierra => :sierra)
   end
 
