@@ -70,6 +70,9 @@ class Elektra < Formula
       system "cmake", "..", *cmake_args
       system "make", "install"
     end
+
+    bash_completion.install "scripts/kdb-bash-completion" => "kdb"
+    zsh_completion.install "scripts/kdb_zsh_completion" => "_kdb"
   end
 
   test do
