@@ -16,7 +16,6 @@ class Elektra < Formula
 
   # Build Dependencies
   depends_on "cmake" => :build
-  depends_on "discount" => [:build, "with-fenced-code"]
   depends_on "doxygen" => [:build, "with-graphviz", "with-llvm"]
   ronn = LanguageModuleRequirement.new :ruby, "ronn"
   ronn.tags << :build
