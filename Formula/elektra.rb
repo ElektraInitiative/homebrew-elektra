@@ -23,10 +23,22 @@ class Elektra < Formula
   depends_on ronn
 
   # Run-Time Dependencies
-  depends_on "augeas" => :optional
-  depends_on "boost" => :optional
-  depends_on "dbus" => :optional
-  depends_on Dependency.new("libgit2", [:optional], proc {}, ["gitresolver"])
+  opt = [[:optional], proc {}, []]
+  # rubocop:disable Style/ClassVars
+  @@plugin_dependencies = {
+    "augeas" => [Dependency.new("augeas", *opt)],
+    "dbus" => [Dependency.new("dbus", *opt)],
+    "gitresolver" => [Dependency.new("libgit2", *opt)],
+    "tcl" => [Dependency.new("boost", *opt)],
+    "yajl" => [Dependency.new("yajl", *opt)],
+  }
+  option "with-dep-plugins", \
+         "Build with additional plugins: " \
+         "#{@@plugin_dependencies.keys.join ", "}"
+  @@plugin_dependencies.values.flatten.each do |dependency|
+    depends_on dependency
+  end
+
   depends_on "lua" => :optional
   if build.with? "lua"
     depends_on "swig"
@@ -36,7 +48,6 @@ class Elektra < Formula
   if build.with? "gui"
     depends_on "discount" => ["with-fenced-code", "with-shared"]
   end
-  depends_on "yajl" => :optional
 
   def install
     cmake_args = %W[
@@ -47,19 +58,19 @@ class Elektra < Formula
     tools = ["kdb", "gen"]
     plugins = ["NODEP;-fcrypt"]
 
-    plugins << "augeas" if build.with? "augeas"
-    plugins << "tcl" if build.with? "boost"
-    plugins << "dbus" if build.with? "dbus"
-    plugins << "gitresolver" if build.with? "libgit2"
+    if build.with? "optional-plugins"
+      plugins + @@plugin_dependencies.keys
+    end
+
     if build.with? "lua"
       bindings << "swig_lua"
       plugins << "lua"
     end
+
     if build.with? "gui"
       tools << "qt-gui"
       cmake_args << "-DCMAKE_PREFIX_PATH=/usr/local/opt/qt5"
     end
-    plugins << "yajl" if build.with? "yajl"
 
     cmake_args += %W[
       -DBINDINGS='#{bindings.join ";"}'
