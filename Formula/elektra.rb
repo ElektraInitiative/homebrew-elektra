@@ -26,7 +26,7 @@ class Elektra < Formula
   depends_on "augeas" => :optional
   depends_on "boost" => :optional
   depends_on "dbus" => :optional
-  depends_on "libgit2" => :optional
+  depends_on Dependency.new("libgit2", [:optional], proc {}, ["gitresolver"])
   depends_on "lua" => :optional
   if build.with? "lua"
     depends_on "swig"
