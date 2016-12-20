@@ -16,7 +16,7 @@ class Elektra < Formula
 
   # Build Dependencies
   depends_on "cmake" => :build
-  depends_on "doxygen" => [:build, "with-graphviz", "with-llvm"]
+  depends_on "doxygen" => :build
   ronn = LanguageModuleRequirement.new :ruby, "ronn"
   ronn.tags << :build
   depends_on ronn
