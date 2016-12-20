@@ -31,8 +31,9 @@ class Elektra < Formula
   if build.with? "lua"
     depends_on "swig"
   end
-  depends_on "qt5" => :optional
-  if build.with? "qt5"
+
+  depends_on Dependency.new("qt5", [:optional], proc {}, ["gui"])
+  if build.with? "gui"
     depends_on "discount" => ["with-fenced-code", "with-shared"]
   end
   depends_on "yajl" => :optional
@@ -54,7 +55,7 @@ class Elektra < Formula
       bindings << "swig_lua"
       plugins << "lua"
     end
-    if build.with? "qt5"
+    if build.with? "gui"
       tools << "qt-gui"
       cmake_args << "-DCMAKE_PREFIX_PATH=/usr/local/opt/qt5"
     end
