@@ -4,6 +4,12 @@ This tap contains the official [🍺 Homebrew](https://brew.sh) formula for the 
 
 # How to Use
 
+## Preparation
+
+**If you installed Elektra manually before**, then please remove it before you install this formula. After you uninstalled Elektra, please run `brew doctor` and remove all fragments of previous Elektra versions that the command reports.
+
+## Installation
+
 To install Elektra using this tap just use the two shell commands listed below:
 
 ```sh
@@ -21,5 +27,4 @@ brew install elektra
 
 # Troubleshooting
 
-- If you have any problems using this formula, then please run `brew doctor` and remove all fragments of previous Elektra versions that the command reports.
 - To check if the installation works you can use the command `brew test elektra`.
