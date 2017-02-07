@@ -57,8 +57,8 @@ class Elektra < Formula
     tools = ["kdb", "gen"]
     plugins = ["NODEP;-fcrypt"]
 
-    if build.with? "optional-plugins"
-      plugins + @@plugin_dependencies.keys
+    if build.with? "dep-plugins"
+      plugins += @@plugin_dependencies.keys
     end
 
     if build.with? "lua"
