@@ -23,7 +23,7 @@ class Elektra < Formula
 
   # Run-Time Dependencies
   opt = [[:optional], proc {}, []]
-  # rubocop:disable Style/ClassVars
+  # rubocop: disable Style/ClassVars
   @@plugin_dependencies = {
     "augeas" => [Dependency.new("augeas", *opt)],
     "dbus" => [Dependency.new("dbus", *opt)],
