@@ -12,14 +12,9 @@ class Elektra < Formula
     sha256(sierra => :sierra)
   end
 
-  env :userpaths
-
   # Build Dependencies
   depends_on "cmake" => :build
   depends_on "doxygen" => :build
-  ronn = LanguageModuleRequirement.new :ruby, "ronn"
-  ronn.tags << :build
-  depends_on ronn
 
   # Run-Time Dependencies
   opt = [[:optional], proc {}, []]
