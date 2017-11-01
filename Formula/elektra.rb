@@ -1,16 +1,9 @@
 class Elektra < Formula
   desc "Configuration Framework"
-  homepage "https://web.libelektra.org"
-  url "http://www.libelektra.org/ftp/elektra/releases/elektra-0.8.19.tar.gz"
-  sha256 "cc14f09539aa95623e884f28e8be7bd67c37550d25e08288108a54fd294fd2a8"
+  homepage "https://libelektra.org"
+  url "https://www.libelektra.org/ftp/elektra/releases/elektra-0.8.20.tar.gz"
+  sha256 "e9cbc796e175685ccb6221f1dd5ea5c43832f545c40557c32b764ff5d567b312"
   head "https://github.com/ElektraInitiative/libelektra.git"
-
-  bottle do
-    root_url("https://github.com/ElektraInitiative/homebrew-elektra/releases/" \
-             "download/0.8.19")
-    sha256("be74a6119140876af7ef5d99ce085fb8c7c1d0a07499cd40c52b61c42ef83d5c" \
-           => :sierra)
-  end
 
   option "with-qt", "Build GUI frontend"
 
@@ -48,7 +41,7 @@ class Elektra < Formula
     ]
     bindings = ["cpp"]
     tools = ["kdb", "gen"]
-    plugins = ["NODEP;-fcrypt"]
+    plugins = ["NODEP"]
 
     plugins += @@plugin_dependencies.keys if build.with? "dep-plugins"
 
@@ -74,6 +67,7 @@ class Elektra < Formula
     end
 
     bash_completion.install "scripts/kdb-bash-completion" => "kdb"
+    fish_completion.install "scripts/kdb.fish"
     zsh_completion.install "scripts/kdb_zsh_completion" => "_kdb"
   end
 
