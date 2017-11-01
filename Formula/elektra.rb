@@ -22,6 +22,7 @@ class Elektra < Formula
     "gitresolver" => [Dependency.new("libgit2", *opt)],
     "tcl" => [Dependency.new("boost", *opt)],
     "yajl" => [Dependency.new("yajl", *opt)],
+    "yamlcpp" => [Dependency.new("yaml-cpp", *opt)],
   }
   option "with-dep-plugins", \
          "Build with additional plugins: " \
