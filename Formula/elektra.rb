@@ -8,17 +8,14 @@ class Elektra < Formula
   bottle do
     root_url("https://github.com/ElektraInitiative/homebrew-elektra/releases/" \
              "download/0.8.19")
-    sierra = "be74a6119140876af7ef5d99ce085fb8c7c1d0a07499cd40c52b61c42ef83d5c"
-    sha256(sierra => :sierra)
+    sha256("be74a6119140876af7ef5d99ce085fb8c7c1d0a07499cd40c52b61c42ef83d5c" \
+           => :sierra)
   end
 
-  # Build Dependencies
-  depends_on "cmake" => :build
-  depends_on "doxygen" => :build
+  option "with-qt", "Build GUI frontend"
 
-  # Run-Time Dependencies
-  opt = [[:optional], proc {}, []]
   # rubocop: disable Style/ClassVars
+  opt = [[:optional], proc {}, []]
   @@plugin_dependencies = {
     "augeas" => [Dependency.new("augeas", *opt)],
     "dbus" => [Dependency.new("dbus", *opt)],
@@ -29,19 +26,20 @@ class Elektra < Formula
   option "with-dep-plugins", \
          "Build with additional plugins: " \
          "#{@@plugin_dependencies.keys.join ", "}"
+
+  # Build Dependencies
+  depends_on "cmake" => :build
+  depends_on "doxygen" => :build
+
+  # Run-Time Dependencies
   @@plugin_dependencies.values.flatten.each do |dependency|
     depends_on dependency
   end
 
   depends_on "lua" => :optional
-  if build.with? "lua"
-    depends_on "swig"
-  end
-
-  depends_on Dependency.new("qt5", [:optional], proc {}, ["gui"])
-  if build.with? "gui"
-    depends_on "discount" => ["with-fenced-code", "with-shared"]
-  end
+  depends_on "swig" if build.with? "lua"
+  depends_on "qt" => :optional
+  depends_on "discount" if build.with? "qt"
 
   def install
     cmake_args = %W[
@@ -52,9 +50,7 @@ class Elektra < Formula
     tools = ["kdb", "gen"]
     plugins = ["NODEP;-fcrypt"]
 
-    if build.with? "dep-plugins"
-      plugins += @@plugin_dependencies.keys
-    end
+    plugins += @@plugin_dependencies.keys if build.with? "dep-plugins"
 
     if build.with? "lua"
       bindings << "swig_lua"
