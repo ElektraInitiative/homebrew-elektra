@@ -58,7 +58,7 @@ class Elektra < Formula
       plugins << "lua"
     end
 
-    if build.with? "gui"
+    if build.with? "qt"
       tools << "qt-gui"
       cmake_args << "-DCMAKE_PREFIX_PATH=/usr/local/opt/qt5"
     end
