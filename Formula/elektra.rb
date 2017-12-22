@@ -1,14 +1,14 @@
 class Elektra < Formula
   desc "Configuration Framework"
   homepage "https://libelektra.org"
-  url "https://www.libelektra.org/ftp/elektra/releases/elektra-0.8.20.tar.gz"
-  sha256 "e9cbc796e175685ccb6221f1dd5ea5c43832f545c40557c32b764ff5d567b312"
+  url "https://www.libelektra.org/ftp/elektra/releases/elektra-0.8.21.tar.gz"
+  sha256 "51892570f18d1667d0da4d0908a091e41b41c20db9835765677109a3d150cd26"
   head "https://github.com/ElektraInitiative/libelektra.git"
 
   bottle do
     root_url("https://github.com/ElektraInitiative/homebrew-elektra/releases/" \
-             "download/0.8.20")
-    sha256 "914d344951e5445d86508db5b8e45efaa94e121bc1d00a0ab4da14d233a09ca9" \
+             "download/0.8.21")
+    sha256 "1afc37e1f0f4cdd55ea34f7c8b60dd6fc6fb737cf49590773ffd44ffbab38180" \
            => :high_sierra
   end
 
