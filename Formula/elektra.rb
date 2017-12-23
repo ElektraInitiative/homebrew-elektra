@@ -24,6 +24,7 @@ class Elektra < Formula
     "yajl" => [Dependency.new("yajl", *opt)],
     "yamlcpp" => [Dependency.new("yaml-cpp", *opt)],
   }
+  # rubocop: enable Style/ClassVars
   option "with-dep-plugins", \
          "Build with additional plugins: " \
          "#{@@plugin_dependencies.keys.join ", "}"
@@ -43,10 +44,6 @@ class Elektra < Formula
   depends_on "discount" if build.with? "qt"
 
   def install
-    cmake_args = %W[
-      -DCMAKE_BUILD_TYPE=Release
-      -DCMAKE_INSTALL_PREFIX=#{prefix}
-    ]
     bindings = ["cpp"]
     tools = ["kdb", "gen"]
     plugins = ["NODEP"]
@@ -58,12 +55,11 @@ class Elektra < Formula
       plugins << "lua"
     end
 
-    if build.with? "qt"
-      tools << "qt-gui"
-      cmake_args << "-DCMAKE_PREFIX_PATH=/usr/local/opt/qt5"
-    end
+    tools << "qt-gui" if build.with? "qt"
 
-    cmake_args += %W[
+    cmake_args = %W[
+      -DCMAKE_BUILD_TYPE=Release
+      -DCMAKE_INSTALL_PREFIX=#{prefix}
       -DBINDINGS='#{bindings.join ";"}'
       -DTOOLS='#{tools.join ";"}'
       -DPLUGINS='#{plugins.join ";"}'
