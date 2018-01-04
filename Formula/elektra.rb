@@ -1,5 +1,5 @@
 class Elektra < Formula
-  desc "Configuration Framework"
+  desc "Framework to access config settings in a global key database"
   homepage "https://libelektra.org"
   url "https://www.libelektra.org/ftp/elektra/releases/elektra-0.8.21.tar.gz"
   sha256 "51892570f18d1667d0da4d0908a091e41b41c20db9835765677109a3d150cd26"
