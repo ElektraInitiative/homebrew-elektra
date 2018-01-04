@@ -1,6 +1,6 @@
 # Elektra Homebrew Formula
 
-This tap contains the official [🍺 Homebrew](https://brew.sh) formula for the configuration framework [⚡️ Elektra](http://web.libelektra.org).
+This tap contains a [🍺 Homebrew](https://brew.sh) formula for the configuration framework [⚡️ Elektra](http://web.libelektra.org). The official Homebrew repository [`homebrew/core`](https://github.com/Homebrew/homebrew-core) also includes an [official formula for Elektra](https://github.com/Homebrew/homebrew-core/blob/master/Formula/elektra.rb). We therefore recommend you use this tap, only if you want to use functionality that is not supported by the formula in `homebrew/core`, such as library dependent plugins (e.g. `yajl`, `yamlcpp`).
 
 # How to Use
 
@@ -13,18 +13,20 @@ This tap contains the official [🍺 Homebrew](https://brew.sh) formula for the 
 To install Elektra using this tap just use the two shell commands listed below:
 
 ```sh
-brew tap ElektraInitiative/homebrew-elektra
-brew install elektra
+brew tap elektrainitiative/elektra
+brew install elektrainitiative/elektra/elektra
 ```
 
-## Versions
+## Options
 
-| Version          | Command                                    |
-| ---------------- | ------------------------------------------ |
-| Bottle (Binary)  | `brew install elektra`                     |
-| Source (Release) | `brew install --build-from-source elektra` |
-| Source (Head)    | `brew install --HEAD elektra`              |
+Use the command `brew info elektrainitiative/elektra/elektra`to show a list of optional switches for this Homebrew formula. One of the switches is `--with-dep-plugins`, which you can use  to install plugins that require third party libraries:
+
+```sh
+brew install elektrainitiative/elektra/elektra --with-dep-plugins
+```
+
+.
 
 # Troubleshooting
 
-- To check if the installation works you can use the command `brew test elektra`.
+To check if the installation worked you can use the command `brew test elektra`.
