@@ -9,7 +9,7 @@ class Elektra < Formula
   bottle do
     root_url("https://github.com/ElektraInitiative/homebrew-elektra/releases/" \
              "download/0.8.26")
-    sha256 "608e413eb14749d1f8ddc8751b584f294be56b815e2ec43d6b6d225cc05f21ba" \
+    sha256 "46b37cb6a63019987f0371d325d0b10ca25c393fc79676cb5119a7c0c067954c" \
            => :mojave
   end
 
