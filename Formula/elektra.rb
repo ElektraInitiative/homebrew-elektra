@@ -3,6 +3,7 @@ class Elektra < Formula
   homepage "https://libelektra.org"
   url "https://www.libelektra.org/ftp/elektra/releases/elektra-0.8.26.tar.gz"
   sha256 "5806cd0b2b1075fe0d5a303649d0bd9365752053e86c684ab7c06e7f369155d3"
+  revision 1
   head "https://github.com/ElektraInitiative/libelektra.git"
 
   bottle do
@@ -63,6 +64,7 @@ class Elektra < Formula
       -DBINDINGS='#{bindings.join ";"}'
       -DTOOLS='#{tools.join ";"}'
       -DPLUGINS='#{plugins.join ";"}'
+      -DINSTALL_SYSTEM_FILES='OFF'
     ]
 
     mkdir "build" do
