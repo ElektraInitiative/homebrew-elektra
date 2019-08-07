@@ -45,7 +45,7 @@ class Elektra < Formula
 
   def install
     bindings = ["cpp"]
-    tools = ["kdb", "gen"]
+    tools = ["kdb"]
     plugins = ["NODEP"]
 
     plugins += @@plugin_dependencies.keys if build.with? "dep-plugins"
