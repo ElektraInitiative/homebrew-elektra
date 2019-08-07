@@ -64,7 +64,6 @@ class Elektra < Formula
       -DBINDINGS='#{bindings.join ";"}'
       -DTOOLS='#{tools.join ";"}'
       -DPLUGINS='#{plugins.join ";"}'
-      -DINSTALL_SYSTEM_FILES='OFF'
     ]
 
     mkdir "build" do
