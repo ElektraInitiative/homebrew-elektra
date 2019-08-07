@@ -9,8 +9,7 @@ class Elektra < Formula
   bottle do
     root_url("https://github.com/ElektraInitiative/homebrew-elektra/releases/" \
              "download/0.8.26")
-    sha256 "46b37cb6a63019987f0371d325d0b10ca25c393fc79676cb5119a7c0c067954c" \
-           => :mojave
+    sha256 "46b37cb6a63019987f0371d325d0b10ca25c393fc79676cb5119a7c0c067954c" => :mojave
   end
 
   option "with-qt", "Build GUI frontend"
@@ -18,12 +17,12 @@ class Elektra < Formula
   # rubocop: disable Style/ClassVars
   opt = [[:optional], proc {}, []]
   @@plugin_dependencies = {
-    "augeas" => [Dependency.new("augeas", *opt)],
-    "dbus" => [Dependency.new("dbus", *opt)],
+    "augeas"      => [Dependency.new("augeas", *opt)],
+    "dbus"        => [Dependency.new("dbus", *opt)],
     "gitresolver" => [Dependency.new("libgit2", *opt)],
-    "tcl" => [Dependency.new("boost", *opt)],
-    "yajl" => [Dependency.new("yajl", *opt)],
-    "yamlcpp" => [Dependency.new("yaml-cpp", *opt)],
+    "tcl"         => [Dependency.new("boost", *opt)],
+    "yajl"        => [Dependency.new("yajl", *opt)],
+    "yamlcpp"     => [Dependency.new("yaml-cpp", *opt)],
   }
   # rubocop: enable Style/ClassVars
   option "with-dep-plugins", \
