@@ -20,6 +20,7 @@ class Elektra < Formula
     "dbus"        => [Dependency.new("dbus", *opt)],
     "gitresolver" => [Dependency.new("libgit2", *opt)],
     "tcl"         => [Dependency.new("boost", *opt)],
+    "xerces"      => [Dependency.new("xerces-c", *opt)],
     "yajl"        => [Dependency.new("yajl", *opt)],
     "yamlcpp"     => [Dependency.new("yaml-cpp", *opt)],
   }
