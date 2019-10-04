@@ -27,6 +27,7 @@ class Elektra < Formula
   depends_on "swig" if build.with? "lua"
   depends_on "qt" => :optional
   depends_on "discount" if build.with? "qt"
+  depends_on "yajl" => :optional
 
   def install
     bindings = ["cpp"]
@@ -42,6 +43,7 @@ class Elektra < Formula
     plugins << "dbus" << "dbusrecv" if build.with? "dbus"
     plugins << "gitresolver" if build.with? "gitresolver"
     plugins << "xerces" if build.with? "xerces"
+    plugins << "yajl" if build.with? "yajl"
 
     tools << "qt-gui" if build.with? "qt"
 
