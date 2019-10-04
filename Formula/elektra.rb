@@ -11,12 +11,14 @@ class Elektra < Formula
     sha256 "7417802277e452b69e7cdc28a7ee89bff9831f31bf363b77fe37967967098c08" => :mojave
   end
 
+  option "with-gitresolver", "Build with gitresolver plugin"
   option "with-qt", "Build GUI frontend"
 
   # Build Dependencies
   depends_on "cmake" => :build
   depends_on "doxygen" => :build
 
+  depends_on "libgit2" if build.with? "gitresolver"
   depends_on "augeas" => :optional
   depends_on "dbus" => :optional
   depends_on "lua" => :optional
@@ -36,6 +38,7 @@ class Elektra < Formula
 
     plugins << "augeas" if build.with? "augeas"
     plugins << "dbus" << "dbusrecv" if build.with? "dbus"
+    plugins << "gitresolver" if build.with? "gitresolver"
 
     tools << "qt-gui" if build.with? "qt"
 
