@@ -13,30 +13,9 @@ class Elektra < Formula
 
   option "with-qt", "Build GUI frontend"
 
-  # rubocop: disable Style/ClassVars
-  opt = [[:optional], proc {}, []]
-  @@plugin_dependencies = {
-    "augeas"      => [Dependency.new("augeas", *opt)],
-    "dbus"        => [Dependency.new("dbus", *opt)],
-    "gitresolver" => [Dependency.new("libgit2", *opt)],
-    "tcl"         => [Dependency.new("boost", *opt)],
-    "xerces"      => [Dependency.new("xerces-c", *opt)],
-    "yajl"        => [Dependency.new("yajl", *opt)],
-    "yamlcpp"     => [Dependency.new("yaml-cpp", *opt)],
-  }
-  # rubocop: enable Style/ClassVars
-  option "with-dep-plugins", \
-         "Build with additional plugins: " \
-         "#{@@plugin_dependencies.keys.join ", "}"
-
   # Build Dependencies
   depends_on "cmake" => :build
   depends_on "doxygen" => :build
-
-  # Run-Time Dependencies
-  @@plugin_dependencies.values.flatten.each do |dependency|
-    depends_on dependency
-  end
 
   depends_on "lua" => :optional
   depends_on "swig" if build.with? "lua"
@@ -47,8 +26,6 @@ class Elektra < Formula
     bindings = ["cpp"]
     tools = ["kdb"]
     plugins = ["NODEP"]
-
-    plugins += @@plugin_dependencies.keys if build.with? "dep-plugins"
 
     if build.with? "lua"
       bindings << "swig_lua"
