@@ -1,6 +1,6 @@
 # Elektra Homebrew Formula
 
-This tap contains a [🍺 Homebrew](https://brew.sh) formula for the configuration framework [⚡️ Elektra](http://web.libelektra.org). The official Homebrew repository [`homebrew/core`](https://github.com/Homebrew/homebrew-core) also includes an [official formula for Elektra](https://github.com/Homebrew/homebrew-core/blob/master/Formula/elektra.rb). We therefore recommend you use this tap, only if you want to use functionality that is not supported by the formula in `homebrew/core`, such as library dependent plugins (e.g. `yajl`, `yamlcpp`).
+This tap contains a [🍺 Homebrew](https://brew.sh) formula for the configuration framework [⚡️ Elektra](http://web.libelektra.org). The official Homebrew repository [`homebrew/core`](https://github.com/Homebrew/homebrew-core) also includes an [official formula for Elektra](https://github.com/Homebrew/homebrew-core/blob/master/Formula/elektra.rb). We therefore recommend you use this tap, only if you want to use functionality that is not supported by the formula in `homebrew/core`, such as library dependent plugins (e.g. `xerces`, `yajl`).
 
 # How to Use
 
@@ -19,13 +19,7 @@ brew install elektrainitiative/elektra/elektra
 
 ## Options
 
-Use the command `brew info elektrainitiative/elektra/elektra`to show a list of optional switches for this Homebrew formula. One of the switches is `--with-dep-plugins`, which you can use  to install plugins that require third party libraries:
-
-```sh
-brew install elektrainitiative/elektra/elektra --with-dep-plugins
-```
-
-.
+Use the command `brew info elektrainitiative/elektra/elektra`to show a list of optional switches for this Homebrew formula.
 
 # Troubleshooting
 
