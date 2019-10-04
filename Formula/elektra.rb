@@ -17,6 +17,7 @@ class Elektra < Formula
   depends_on "cmake" => :build
   depends_on "doxygen" => :build
 
+  depends_on "augeas" => :optional
   depends_on "lua" => :optional
   depends_on "swig" if build.with? "lua"
   depends_on "qt" => :optional
@@ -31,6 +32,8 @@ class Elektra < Formula
       bindings << "swig_lua"
       plugins << "lua"
     end
+
+    plugins << "augeas" if build.with? "augeas"
 
     tools << "qt-gui" if build.with? "qt"
 
