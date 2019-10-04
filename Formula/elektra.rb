@@ -13,12 +13,14 @@ class Elektra < Formula
 
   option "with-gitresolver", "Build with gitresolver plugin"
   option "with-qt", "Build GUI frontend"
+  option "with-xerces", "Build with xerces plugin"
 
   # Build Dependencies
   depends_on "cmake" => :build
   depends_on "doxygen" => :build
 
   depends_on "libgit2" if build.with? "gitresolver"
+  depends_on "xerces-c" if build.with? "xerces"
   depends_on "augeas" => :optional
   depends_on "dbus" => :optional
   depends_on "lua" => :optional
@@ -39,6 +41,7 @@ class Elektra < Formula
     plugins << "augeas" if build.with? "augeas"
     plugins << "dbus" << "dbusrecv" if build.with? "dbus"
     plugins << "gitresolver" if build.with? "gitresolver"
+    plugins << "xerces" if build.with? "xerces"
 
     tools << "qt-gui" if build.with? "qt"
 
