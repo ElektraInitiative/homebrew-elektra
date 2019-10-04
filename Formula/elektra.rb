@@ -21,11 +21,14 @@ class Elektra < Formula
 
   depends_on "libgit2" if build.with? "gitresolver"
   depends_on "xerces-c" if build.with? "xerces"
+
   depends_on "augeas" => :optional
   depends_on "dbus" => :optional
   depends_on "lua" => :optional
+
   depends_on "swig" if build.with? "lua"
   depends_on "qt" => :optional
+
   depends_on "discount" if build.with? "qt"
   depends_on "yajl" => :optional
 
