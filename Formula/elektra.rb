@@ -72,7 +72,7 @@ class Elektra < Formula
     output = shell_output("#{bin}/kdb get system/elektra/version/infos/licence")
     assert_match "BSD", output
     Utils.popen_read("#{bin}/kdb", "list").split.each do |plugin|
-      system "#{bin}/kdb", "check", plugin
+      system "#{bin}/kdb", "plugin-check", plugin
     end
   end
 end
